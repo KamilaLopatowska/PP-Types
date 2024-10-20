@@ -2,9 +2,9 @@
 
 // Data - do not change it in code!
 string[] names = {
-    "Mickey Mouse", "Minnie Mouse", "Donald Duck", "Goofy", "Pluto", "Daisy Duck", "Simba", "Nala", 
-    "Timon", "Pumbaa", "Mufasa", "Ariel", "Flounder", "Sebastian", "Ursula", "Belle", "Beast", "Gaston", 
-    "Cinderella", "Prince Charming", "Aurora", "Maleficent", "Rapunzel", "Flynn Rider", "Elsa", "Anna", 
+    "Mickey Mouse", "Minnie Mouse", "Donald Duck", "Goofy", "Pluto", "Daisy Duck", "Simba", "Nala",
+    "Timon", "Pumbaa", "Mufasa", "Ariel", "Flounder", "Sebastian", "Ursula", "Belle", "Beast", "Gaston",
+    "Cinderella", "Prince Charming", "Aurora", "Maleficent", "Rapunzel", "Flynn Rider", "Elsa", "Anna",
     "Olaf", "Moana", "Maui", "Hercules"
 };
 
@@ -15,11 +15,25 @@ string[] names = {
 void PrintGroups(string[] t, int perLine)
 {
 
-    // Write required code.
+    for (int i = 0; i < t.Length; i++)
+    {
+        Console.Write(t[i]);
+        if (i == t.Length - 1)
+        {
+            Console.Write(".\n");
+        }
+        else if ((i + 1) % perLine == 0)
+        {
+            Console.WriteLine(",");
+        }
+        else
+        {
+            Console.Write(", ");
+        }
+
+    }
 
 }
-
-
 // Print all array elements in *perLine* columns.
 // Each column must have given *width* (number of chars).
 // Columns should be separated by "| ".
@@ -28,7 +42,23 @@ void PrintGroups(string[] t, int perLine)
 void PrintColumns(string[] t, int perLine, int width)
 {
 
-    // Write required code.
+    for (int i = 0; i < t.Length; i++)
+    {
+        string currentElement = t[i].Length > width ? t[i].Substring(0, width) : t[i];
+        Console.Write(currentElement.PadRight(width));
+        if ((i + 1) % perLine == 0)
+        {
+            Console.WriteLine();
+        }
+        else
+        {
+            Console.Write(" | ");
+        }
+    }
+    if (t.Length % perLine != 0)
+    {
+        Console.WriteLine();
+    }
 
 }
 
@@ -106,7 +136,7 @@ Aurora         | Maleficent     | Rapunzel       | Flynn Rider    | Elsa
 Anna           | Olaf           | Moana          | Maui           | Hercules
 */
 
-Console.WriteLine("\n\nPrintColumns(names, 7, 10):\n");
+Console.WriteLine("\n\nPrintColumns(names, 8, 10):\n");
 PrintColumns(names, 8, 10);
 /*
 Mickey Mou| Minnie Mou| Donald Duc| Goofy     | Pluto     | Daisy Duck| Simba     | Nala
